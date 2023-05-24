@@ -26,7 +26,10 @@ class PeopleController extends Controller
             'email' => $request->input('email'),
         ]);
         $person->save();
-        return response()->json('Person created!');
+
+        $user = People::where('email', $request->input('email'))->first();
+        
+        return response()->json($user);
     }
     public function show($id)
     {
@@ -37,12 +40,12 @@ class PeopleController extends Controller
     {
        $person = People::find($id);
        $person->update($request->all());
-       return response()->json('Person updated');
+       return response()->json('Pessoa atualizada');
     }
     public function destroy($id)
     {
         $person = People::find($id);
         $person->delete();
-        return response()->json(' deleted!');
+        return response()->json('Pessoa deletada');
     }
 }

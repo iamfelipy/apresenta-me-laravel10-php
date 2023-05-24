@@ -5,13 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeopleController;
 
 Route::get('/people',[PeopleController::class,'index']);
-
 Route::post('/save',[PeopleController::class,'store']);
-
 Route::get('/show/{id}',[PeopleController::class,'show']);
-
 Route::put('/update/{id}',[PeopleController::class,'update']);
-
 Route::delete('/delete/{id}',[PeopleController::class,'destroy']);
 
 /*
