@@ -2,13 +2,20 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
-Route::get('/people',[PeopleController::class,'index']);
-Route::post('/save',[PeopleController::class,'store']);
-Route::get('/show/{id}',[PeopleController::class,'show']);
-Route::put('/update/{id}',[PeopleController::class,'update']);
-Route::delete('/delete/{id}',[PeopleController::class,'destroy']);
+Route::get('/user',[UserController::class,'index']);
+Route::post('/save',[UserController::class,'store']);
+Route::get('/show/{id}',[UserController::class,'show']);
+Route::put('/update/{id}',[UserController::class,'update']);
+Route::delete('/delete/{id}',[UserController::class,'destroy']);
+
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::post('/login', [LoginController::class, 'check']);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +28,6 @@ Route::delete('/delete/{id}',[PeopleController::class,'destroy']);
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
